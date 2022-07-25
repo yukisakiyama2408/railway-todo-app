@@ -23,14 +23,13 @@ export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/signin" component={SignIn} element={<SignIn />} />
-        <Route exact path="/signup" component={SignUp} element={<SignUp />} />
+        <Route exact path="/signin" element={<SignIn />} />
+        <Route exact path="/signup" element={<SignUp />} />
         {/* {auth ? (
           <> */}
         <Route
           exact
           path="/"
-          component={Home}
           element={
             <AuthRouter>
               <Home />
@@ -40,7 +39,6 @@ export const Router = () => {
         <Route
           exact
           path="/task/new"
-          component={NewTask}
           element={
             <AuthRouter>
               <NewTask />
@@ -50,7 +48,6 @@ export const Router = () => {
         <Route
           exact
           path="/list/new"
-          component={NewList}
           element={
             <AuthRouter>
               <NewList />
@@ -60,7 +57,6 @@ export const Router = () => {
         <Route
           exact
           path="/lists/:listId/tasks/:taskId"
-          component={EditTask}
           element={
             <AuthRouter>
               <EditTask />
@@ -70,7 +66,6 @@ export const Router = () => {
         <Route
           exact
           path="/lists/:listId/edit"
-          component={EditList}
           element={
             <AuthRouter>
               <EditList />
