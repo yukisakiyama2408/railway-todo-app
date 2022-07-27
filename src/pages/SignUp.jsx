@@ -13,7 +13,7 @@ import { signIn } from "../authSlice";
 import { Header } from "../components/Header";
 import { url } from "../const";
 import { Home } from "./Home";
-import "./signUp.css";
+import "./signUp.scss";
 
 export const SignUp = () => {
   const navigate = useNavigate();
