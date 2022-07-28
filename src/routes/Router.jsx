@@ -10,11 +10,12 @@ import { EditTask } from "../pages/EditTask";
 import { SignUp } from "../pages/SignUp";
 import { EditList } from "../pages/EditList";
 
-const AuthRouter = () => {
+const AuthRouter = ({ children }) => {
   const auth = useSelector((state) => state.auth.isSignIn);
   if (!auth) {
     return <Navigate to="/signin" />;
   }
+  return children;
 };
 
 export const Router = () => {
