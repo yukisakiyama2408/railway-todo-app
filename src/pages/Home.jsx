@@ -142,6 +142,7 @@ const Tasks = (props) => {
               >
                 {task.title}
                 <br />
+
                 {task.done ? "完了" : "未完了"}
               </Link>
             </li>
@@ -150,6 +151,7 @@ const Tasks = (props) => {
     );
   }
 
+  const currentTime = Date();
   return (
     <ul>
       {tasks
@@ -163,6 +165,8 @@ const Tasks = (props) => {
               className="task-item-link"
             >
               {task.title}
+              <br />
+              {task.limit}
               <br />
               {task.done ? "完了" : "未完了"}
             </Link>
