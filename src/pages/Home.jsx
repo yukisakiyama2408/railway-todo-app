@@ -5,6 +5,7 @@ import axios from "axios";
 import { Header } from "../components/Header";
 import { url } from "../const";
 import { formatDistance, format } from "date-fns";
+import { formatInTimeZone } from "date-fns-tz";
 import "./home.scss";
 
 export const Home = () => {
@@ -169,7 +170,8 @@ const Tasks = (props) => {
             >
               {task.title}
               <br />
-              期限：{format(new Date(task.limit), "yyyy年MM月dd日")}
+              期限：
+              {formatInTimeZone(new Date(task.limit), "JST", "yyyy年MM月dd日")}
               {/* {task.limit} */}
               <br />
               残り時間： {formatDistance(new Date(task.limit), currentTime)}
