@@ -99,7 +99,7 @@ export const NewTask = () => {
           <label>期限</label>
           <br />
           <input
-            type="text"
+            type="date"
             onChange={handleLimitChange}
             // className="new-task-title"
           />

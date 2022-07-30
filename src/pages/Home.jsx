@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Header } from "../components/Header";
 import { url } from "../const";
+import { formatDistance } from "date-fns";
 import "./home.scss";
 
 export const Home = () => {
@@ -41,6 +42,7 @@ export const Home = () => {
         })
         .then((res) => {
           setTasks(res.data.tasks);
+          console.log(res.data.tasks);
         })
         .catch((err) => {
           setErrorMessage(`タスクの取得に失敗しました。${err}`);
@@ -126,7 +128,6 @@ export const Home = () => {
 const Tasks = (props) => {
   const { tasks, selectListId, isDoneDisplay } = props;
   if (tasks === null) return <></>;
-
   if (isDoneDisplay == "done") {
     return (
       <ul>
@@ -150,8 +151,9 @@ const Tasks = (props) => {
       </ul>
     );
   }
-
-  const currentTime = Date();
+  const currentTime = new Date();
+  // console.log(currentTime);
+  // console.log(typeof { currentTime });
   return (
     <ul>
       {tasks
@@ -167,6 +169,8 @@ const Tasks = (props) => {
               {task.title}
               <br />
               {task.limit}
+              残り時間： {formatDistance(new Date(task.limit), currentTime)}
+              {/* {new Date(task.limit) - currentTime} */}
               <br />
               {task.done ? "完了" : "未完了"}
             </Link>

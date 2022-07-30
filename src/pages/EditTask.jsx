@@ -108,8 +108,8 @@ export const EditTask = () => {
           <br />
           <label>期限</label>
           <br />
-          <textarea
-            type="limit"
+          <input
+            type="date"
             onChange={handleLimitChange}
             className="edit-task-limit"
             value={limit}
