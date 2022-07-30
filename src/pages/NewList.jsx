@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Header } from "../components/Header";
-import { useNavigate, usexNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { url } from "../const";
 import "./newList.scss";
 

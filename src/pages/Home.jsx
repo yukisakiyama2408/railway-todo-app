@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Header } from "../components/Header";
 import { url } from "../const";
-import { formatDistance } from "date-fns";
+import { formatDistance, format } from "date-fns";
 import "./home.scss";
 
 export const Home = () => {
@@ -154,6 +154,7 @@ const Tasks = (props) => {
   const currentTime = new Date();
   // console.log(currentTime);
   // console.log(typeof { currentTime });
+  const timeZone = "JST";
   return (
     <ul>
       {tasks
@@ -168,11 +169,13 @@ const Tasks = (props) => {
             >
               {task.title}
               <br />
-              {task.limit}
+              期限：{format(new Date(task.limit), "yyyy年MM月dd日")}
+              {/* {task.limit} */}
+              <br />
               残り時間： {formatDistance(new Date(task.limit), currentTime)}
               {/* {new Date(task.limit) - currentTime} */}
               <br />
-              {task.done ? "完了" : "未完了"}
+              状態： {task.done ? "完了" : "未完了"}
             </Link>
           </li>
         ))}

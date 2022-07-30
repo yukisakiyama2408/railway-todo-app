@@ -4,6 +4,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { url } from "../const";
 import { useNavigate, useParams } from "react-router-dom";
+import { format } from "date-fns";
 import "./editTask.scss";
 
 export const EditTask = () => {
@@ -27,7 +28,7 @@ export const EditTask = () => {
     const data = {
       title: title,
       detail: detail,
-      limit: limit,
+      limit: new Date(limit),
       done: isDone,
     };
 
@@ -72,7 +73,7 @@ export const EditTask = () => {
         const task = res.data;
         setTitle(task.title);
         setDetail(task.detail);
-        console.log(typeof task.limit);
+        // console.log(typeof task.limit);
         setLimit(task.limit);
         setIsDone(task.done);
       })
@@ -81,6 +82,8 @@ export const EditTask = () => {
       });
   }, []);
 
+  console.log(limit);
+  const defaultLimit = format(new Date(limit), "yyyy-MM-dd");
   return (
     <div>
       <Header />
@@ -112,7 +115,7 @@ export const EditTask = () => {
             type="date"
             onChange={handleLimitChange}
             className="edit-task-limit"
-            value={limit}
+            value={defaultLimit}
           />
           <br />
           <div>

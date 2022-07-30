@@ -18,15 +18,15 @@ export const NewTask = () => {
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleLimitChange = (e) => {
-    const limitDate = new Date(e.target.value);
-    setLimit(limitDate);
+    // const limitDate = new Date(e.target.value);
+    setLimit(e.target.value);
   };
   const handleSelectList = (id) => setSelectListId(id);
   const onCreateTask = () => {
     const data = {
       title: title,
       detail: detail,
-      limit: limit,
+      limit: new Date(limit),
       done: false,
     };
 
