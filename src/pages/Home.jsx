@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Header } from "../components/Header";
 import { url } from "../const";
-import { formatDistance, format } from "date-fns";
+import { formatDistance } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
 import "./home.scss";
 
@@ -153,9 +153,7 @@ const Tasks = (props) => {
     );
   }
   const currentTime = new Date();
-  // console.log(currentTime);
-  // console.log(typeof { currentTime });
-  const timeZone = "JST";
+
   return (
     <ul>
       {tasks

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { url } from "../const";
 import { useNavigate, useParams } from "react-router-dom";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 import dayjs from "dayjs";
 import "./editTask.scss";
 
@@ -39,6 +39,7 @@ export const EditTask = () => {
         },
       })
       .then((res) => {
+        console.log(res.data);
         navigate("/");
       })
       .catch((err) => {
