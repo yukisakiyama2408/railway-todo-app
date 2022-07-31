@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import { url } from "../const";
 import { useNavigate, useParams } from "react-router-dom";
 import { format } from "date-fns";
+import dayjs from "dayjs";
 import "./editTask.scss";
 
 export const EditTask = () => {
@@ -20,7 +21,6 @@ export const EditTask = () => {
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleIsDoneChange = (e) => setIsDone(e.target.value === "done");
   const handleLimitChange = (e) => {
-    // const limitDate = new Date(e.target.value);
     setLimit(e.target.value);
   };
   const onUpdateTask = () => {
@@ -39,7 +39,6 @@ export const EditTask = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         navigate("/");
       })
       .catch((err) => {
@@ -73,7 +72,6 @@ export const EditTask = () => {
         const task = res.data;
         setTitle(task.title);
         setDetail(task.detail);
-        // console.log(typeof task.limit);
         setLimit(task.limit);
         setIsDone(task.done);
       })
@@ -81,9 +79,11 @@ export const EditTask = () => {
         setErrorMessage(`タスク情報の取得に失敗しました。${err}`);
       });
   }, []);
+  // const defaultLimit = format(new Date(limit), "YYYY-MM-DD");
+  const defaultLimit = dayjs(limit).format("YYYY-MM-DD");
 
-  console.log(limit);
-  const defaultLimit = format(new Date(limit), "yyyy-MM-dd");
+  console.log(defaultLimit);
+
   return (
     <div>
       <Header />
