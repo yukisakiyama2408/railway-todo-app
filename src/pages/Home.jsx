@@ -4,8 +4,8 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Header } from "../components/Header";
 import { url } from "../const";
-import { formatDistance } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
+import dayjs from "dayjs";
 import "./home.scss";
 
 export const Home = () => {
@@ -169,10 +169,12 @@ const Tasks = (props) => {
               {task.title}
               <br />
               期限：
+              {/* {task.limit} */}
               {formatInTimeZone(new Date(task.limit), "JST", "yyyy年MM月dd日")}
               {/* {task.limit} */}
               <br />
-              残り時間： {formatDistance(new Date(task.limit), currentTime)}
+              期限日まで残り： {dayjs(task.limit).diff(currentTime, "day")}日
+              {/* 残り時間： {formatDistance(new Date(task.limit), currentTime)} */}
               {/* {new Date(task.limit) - currentTime} */}
               <br />
               状態： {task.done ? "完了" : "未完了"}
