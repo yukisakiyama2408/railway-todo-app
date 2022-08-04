@@ -89,13 +89,29 @@ export const Home = () => {
             {lists.map((list, key) => {
               const isActive = list.id === selectListId;
               return (
-                <li
-                  key={key}
-                  className={`list-tab-item ${isActive ? "active" : ""}`}
-                  onClick={() => handleSelectList(list.id)}
-                >
-                  {list.title}
-                </li>
+                <div key={key} role="tablist" aria-label="to-do-category">
+                  {/* <li
+                    // key={key}
+                    className={`list-tab-item ${isActive ? "active" : ""}`}
+                    onClick={() => handleSelectList(list.id)}
+                    role="tab"
+                    // aria-selected="true"
+                    aria-controls="tabpanel-id"
+                    id="tab-id"
+                  >
+                    {list.title} */}
+                  <button
+                    className={`list-tab-item ${isActive ? "active" : ""}`}
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="tabpanel-id"
+                    onClick={() => handleSelectList(list.id)}
+                    id="tab-id"
+                  >
+                    {list.title}
+                  </button>
+                  {/* </li> */}
+                </div>
               );
             })}
           </ul>
