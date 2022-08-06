@@ -1,8 +1,15 @@
 @charset "utf-8";
 
+$breakpoint: (
+  "sp": "screen and (min-width: 320px)",
+  "tablet": "screen and (min-width: 768px)",
+  "pc": "screen and (min-width: 1000px)",
+);
+
 .new-list {
-  width: 1000px;
+  width: 300px;
   margin: 0 auto;
+  padding-top: 50px;
 }
 
 .new-list-form {
@@ -11,6 +18,7 @@
 
 .new-list-title {
   width: 300px;
+  height: 30px;
   margin-bottom: 25px;
 }
 
@@ -20,4 +28,13 @@
   width: 80px;
   height: 40px;
   border-radius: 5px;
+}
+
+@media #{ map-get($breakpoint, sp) } {
+  h2 {
+    font-size: 20px;
+  }
+  label {
+    font-size: 15px;
+  }
 }
